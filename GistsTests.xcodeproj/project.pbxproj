@@ -9,13 +9,23 @@
 /* Begin PBXBuildFile section */
 		51077CCD2BEE8977002C7F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CCC2BEE8977002C7F0D /* AppDelegate.swift */; };
 		51077CCF2BEE8977002C7F0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CCE2BEE8977002C7F0D /* SceneDelegate.swift */; };
-		51077CD12BEE8977002C7F0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CD02BEE8977002C7F0D /* ViewController.swift */; };
-		51077CD42BEE8977002C7F0D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 51077CD32BEE8977002C7F0D /* Base */; };
+		51077CD12BEE8977002C7F0D /* GistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CD02BEE8977002C7F0D /* GistListViewController.swift */; };
 		51077CD62BEE8978002C7F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51077CD52BEE8978002C7F0D /* Assets.xcassets */; };
 		51077CD92BEE8978002C7F0D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 51077CD82BEE8978002C7F0D /* Base */; };
 		51077CE42BEE8978002C7F0D /* GistsTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CE32BEE8978002C7F0D /* GistsTestsTests.swift */; };
 		51077CEE2BEE8978002C7F0D /* GistsTestsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CED2BEE8978002C7F0D /* GistsTestsUITests.swift */; };
 		51077CF02BEE8978002C7F0D /* GistsTestsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CEF2BEE8978002C7F0D /* GistsTestsUITestsLaunchTests.swift */; };
+		51077D002BEE8C31002C7F0D /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077CFF2BEE8C31002C7F0D /* ApplicationCoordinator.swift */; };
+		51077D082BEED005002C7F0D /* MVVMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D072BEED005002C7F0D /* MVVMC.swift */; };
+		51077D0A2BEED015002C7F0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D092BEED015002C7F0D /* Coordinator.swift */; };
+		51077D0C2BEED02E002C7F0D /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D0B2BEED02E002C7F0D /* MVVMViewController.swift */; };
+		51077D0E2BEED050002C7F0D /* GistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D0D2BEED050002C7F0D /* GistListViewModel.swift */; };
+		51077D112BEED142002C7F0D /* GistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D102BEED142002C7F0D /* GistDetailViewController.swift */; };
+		51077D132BEED15E002C7F0D /* GistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D122BEED15E002C7F0D /* GistDetailViewModel.swift */; };
+		51077D152BEED1DE002C7F0D /* GistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D142BEED1DE002C7F0D /* GistListView.swift */; };
+		51077D182BEEDB2F002C7F0D /* GistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D172BEEDB2F002C7F0D /* GistTableViewCell.swift */; };
+		51077D1A2BEF8B53002C7F0D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D192BEF8B53002C7F0D /* BaseView.swift */; };
+		51077D1D2BEF8C93002C7F0D /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 51077D1C2BEF8C93002C7F0D /* Hero */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +49,7 @@
 		51077CC92BEE8977002C7F0D /* GistsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51077CCC2BEE8977002C7F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51077CCE2BEE8977002C7F0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		51077CD02BEE8977002C7F0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		51077CD32BEE8977002C7F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		51077CD02BEE8977002C7F0D /* GistListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListViewController.swift; sourceTree = "<group>"; };
 		51077CD52BEE8978002C7F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51077CD82BEE8978002C7F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51077CDA2BEE8978002C7F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +58,16 @@
 		51077CE92BEE8978002C7F0D /* GistsTestsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GistsTestsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51077CED2BEE8978002C7F0D /* GistsTestsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsTestsUITests.swift; sourceTree = "<group>"; };
 		51077CEF2BEE8978002C7F0D /* GistsTestsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsTestsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		51077CFF2BEE8C31002C7F0D /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		51077D072BEED005002C7F0D /* MVVMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMC.swift; sourceTree = "<group>"; };
+		51077D092BEED015002C7F0D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		51077D0B2BEED02E002C7F0D /* MVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMViewController.swift; sourceTree = "<group>"; };
+		51077D0D2BEED050002C7F0D /* GistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListViewModel.swift; sourceTree = "<group>"; };
+		51077D102BEED142002C7F0D /* GistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailViewController.swift; sourceTree = "<group>"; };
+		51077D122BEED15E002C7F0D /* GistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailViewModel.swift; sourceTree = "<group>"; };
+		51077D142BEED1DE002C7F0D /* GistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListView.swift; sourceTree = "<group>"; };
+		51077D172BEEDB2F002C7F0D /* GistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTableViewCell.swift; sourceTree = "<group>"; };
+		51077D192BEF8B53002C7F0D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51077D1D2BEF8C93002C7F0D /* Hero in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,12 +119,11 @@
 		51077CCB2BEE8977002C7F0D /* GistsTests */ = {
 			isa = PBXGroup;
 			children = (
-				51077CCC2BEE8977002C7F0D /* AppDelegate.swift */,
-				51077CCE2BEE8977002C7F0D /* SceneDelegate.swift */,
-				51077CD02BEE8977002C7F0D /* ViewController.swift */,
-				51077CD22BEE8977002C7F0D /* Main.storyboard */,
-				51077CD52BEE8978002C7F0D /* Assets.xcassets */,
-				51077CD72BEE8978002C7F0D /* LaunchScreen.storyboard */,
+				51077D032BEE917D002C7F0D /* Assets */,
+				51077CFD2BEE8BF3002C7F0D /* Application */,
+				51077CFE2BEE8C1A002C7F0D /* Coordinators */,
+				51077D012BEE9161002C7F0D /* Features */,
+				51077D062BEECFF5002C7F0D /* Protocols */,
 				51077CDA2BEE8978002C7F0D /* Info.plist */,
 			);
 			path = GistsTests;
@@ -127,6 +146,80 @@
 			path = GistsTestsUITests;
 			sourceTree = "<group>";
 		};
+		51077CFD2BEE8BF3002C7F0D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				51077CCC2BEE8977002C7F0D /* AppDelegate.swift */,
+				51077CCE2BEE8977002C7F0D /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		51077CFE2BEE8C1A002C7F0D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				51077CFF2BEE8C31002C7F0D /* ApplicationCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		51077D012BEE9161002C7F0D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				51077D0F2BEED13A002C7F0D /* GistDetail */,
+				51077D022BEE9169002C7F0D /* GistsList */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		51077D022BEE9169002C7F0D /* GistsList */ = {
+			isa = PBXGroup;
+			children = (
+				51077D162BEEDB15002C7F0D /* Subviews */,
+				51077CD02BEE8977002C7F0D /* GistListViewController.swift */,
+				51077D0D2BEED050002C7F0D /* GistListViewModel.swift */,
+			);
+			path = GistsList;
+			sourceTree = "<group>";
+		};
+		51077D032BEE917D002C7F0D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				51077CD52BEE8978002C7F0D /* Assets.xcassets */,
+				51077CD72BEE8978002C7F0D /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		51077D062BEECFF5002C7F0D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				51077D192BEF8B53002C7F0D /* BaseView.swift */,
+				51077D092BEED015002C7F0D /* Coordinator.swift */,
+				51077D072BEED005002C7F0D /* MVVMC.swift */,
+				51077D0B2BEED02E002C7F0D /* MVVMViewController.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		51077D0F2BEED13A002C7F0D /* GistDetail */ = {
+			isa = PBXGroup;
+			children = (
+				51077D102BEED142002C7F0D /* GistDetailViewController.swift */,
+				51077D122BEED15E002C7F0D /* GistDetailViewModel.swift */,
+			);
+			path = GistDetail;
+			sourceTree = "<group>";
+		};
+		51077D162BEEDB15002C7F0D /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				51077D142BEED1DE002C7F0D /* GistListView.swift */,
+				51077D172BEEDB2F002C7F0D /* GistTableViewCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +236,9 @@
 			dependencies = (
 			);
 			name = GistsTests;
+			packageProductDependencies = (
+				51077D1C2BEF8C93002C7F0D /* Hero */,
+			);
 			productName = GistsTests;
 			productReference = 51077CC92BEE8977002C7F0D /* GistsTests.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +311,10 @@
 				Base,
 			);
 			mainGroup = 51077CC02BEE8977002C7F0D;
+			packageReferences = (
+				51077CFC2BEE8BC6002C7F0D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */,
+			);
 			productRefGroup = 51077CCA2BEE8977002C7F0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +333,6 @@
 			files = (
 				51077CD62BEE8978002C7F0D /* Assets.xcassets in Resources */,
 				51077CD92BEE8978002C7F0D /* Base in Resources */,
-				51077CD42BEE8977002C7F0D /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51077CD12BEE8977002C7F0D /* ViewController.swift in Sources */,
+				51077D112BEED142002C7F0D /* GistDetailViewController.swift in Sources */,
+				51077D1A2BEF8B53002C7F0D /* BaseView.swift in Sources */,
+				51077CD12BEE8977002C7F0D /* GistListViewController.swift in Sources */,
 				51077CCD2BEE8977002C7F0D /* AppDelegate.swift in Sources */,
+				51077D132BEED15E002C7F0D /* GistDetailViewModel.swift in Sources */,
+				51077D0C2BEED02E002C7F0D /* MVVMViewController.swift in Sources */,
+				51077D0A2BEED015002C7F0D /* Coordinator.swift in Sources */,
+				51077D082BEED005002C7F0D /* MVVMC.swift in Sources */,
+				51077D152BEED1DE002C7F0D /* GistListView.swift in Sources */,
+				51077D182BEEDB2F002C7F0D /* GistTableViewCell.swift in Sources */,
 				51077CCF2BEE8977002C7F0D /* SceneDelegate.swift in Sources */,
+				51077D002BEE8C31002C7F0D /* ApplicationCoordinator.swift in Sources */,
+				51077D0E2BEED050002C7F0D /* GistListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +406,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		51077CD22BEE8977002C7F0D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				51077CD32BEE8977002C7F0D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		51077CD72BEE8978002C7F0D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,14 +547,13 @@
 				INFOPLIST_FILE = GistsTests/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = salgadosproductions.test.GistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -473,14 +573,13 @@
 				INFOPLIST_FILE = GistsTests/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = salgadosproductions.test.GistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -601,6 +700,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51077CFC2BEE8BC6002C7F0D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51077D1C2BEF8C93002C7F0D /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 51077CC12BEE8977002C7F0D /* Project object */;
 }
