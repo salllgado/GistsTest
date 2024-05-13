@@ -8,6 +8,10 @@
 import UIKit
 import Hero
 
+protocol GistListCoordinating {
+    func navigateToDetail(gist: Gist)
+}
+
 final class ApplicationCoordinator: Coordinator {
         
     let window: UIWindow?
@@ -22,17 +26,21 @@ final class ApplicationCoordinator: Coordinator {
     
     func start() {
         let vm = GistListViewModel()
-        let vc = GistListViewController(vm, self)
+        let vc = GistListViewController(viewModel: vm, coordinator: self)
         context.pushViewController(vc, animated: false)
         window?.rootViewController = context
         window?.makeKeyAndVisible()
     }
     
+}
+
+extension ApplicationCoordinator: GistListCoordinating {
+    
     func navigateToDetail(gist: Gist) {
-        let viewModel = GistDetailViewModel(gist: gist)
-        context.pushViewController(
-            GistDetailViewController(viewModel, self),
-            animated: true
-        )
+//        let viewModel = GistDetailViewModel(gist: gist)
+//        context.pushViewController(
+//            GistDetailViewController(viewModel, self),
+//            animated: true
+//        )
     }
 }

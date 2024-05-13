@@ -7,15 +7,15 @@
 
 import Foundation
 
-final class GistDetailViewModel: ViewModel {
+protocol GistDetailViewModable {
+    
+}
+
+final class GistDetailViewModel: GistDetailViewModable {
     
     private(set) var gist: Gist
     
-    init() {
-        fatalError()
-    }
-    
-    required init(gist: Gist) {
+    init(gist: Gist) {
         self.gist = gist
     }
 }

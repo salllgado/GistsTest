@@ -8,7 +8,18 @@
 import UIKit
 import Hero
 
-final class GistDetailViewController: MVVMViewController<GistDetailViewModel, ApplicationCoordinator> {
+final class GistDetailViewController: UIViewController{
+    
+    private var viewModel: GistDetailViewModable
+
+    init(viewModel: GistDetailViewModable) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var circularView: UIView = {
         let view = UIView()
@@ -36,6 +47,6 @@ final class GistDetailViewController: MVVMViewController<GistDetailViewModel, Ap
         super.viewDidLoad()
         title = "Detalhes"
         
-        circularView.backgroundColor = vm.gist.backgroundColor
+//        circularView.backgroundColor = viewModel.gist.
     }
 }

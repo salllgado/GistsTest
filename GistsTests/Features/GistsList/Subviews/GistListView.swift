@@ -9,11 +9,7 @@ import UIKit
 import Hero
 
 protocol GistListViewProtocol: UIView {
-    func displayData(_ itens: [Any])
-}
-
-struct Gist {
-    let backgroundColor: UIColor
+    func displayData(_ itens: [Gist])
 }
 
 final class GistListView: UIView, BaseView, GistListViewProtocol {
@@ -37,7 +33,7 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
         return tableView
     }()
     
-    private var itens: [Any] = [] {
+    private var itens: [Gist] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -82,7 +78,7 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
     
     // MARK: - GistListViewProtocol
     
-    func displayData(_ itens: [Any]) {
+    func displayData(_ itens: [Gist]) {
         self.itens = itens
     }
     
@@ -97,13 +93,14 @@ extension GistListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.backgroundColor = [.red, .black].randomElement()
+        cell.backgroundColor = .red
+        cell.textLabel?.text = itens[indexPath.row].owner.login
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.cellForRow(at: indexPath)?.hero.id = "backgroundColorAnimated"
-        actions?.didSelectGist(.init(backgroundColor: tableView.cellForRow(at: indexPath)?.backgroundColor ?? .white))
+        actions?.didSelectGist(itens[indexPath.row])
     }
 }
