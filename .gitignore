@@ -27,6 +27,7 @@ DerivedData
 *.dSYM.zip
 *dSYM
 *.xcuserstate
+Config.xcconfig
 
 # Bundler
 .bundle
