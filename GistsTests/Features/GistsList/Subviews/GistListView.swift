@@ -19,6 +19,8 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
     }
     
     private var actions: Actions?
+    var paginationDataSource: GistListPaginationDataSource
+    var paginationDelegate: GistListPaginationDelegate
     
     // MARK: - Properties
     
@@ -41,8 +43,14 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
     
     // MARK: - Initializers
     
-    init(actions: Actions) {
+    init(
+        actions: Actions,
+        paginationDataSource: GistListPaginationDataSource,
+        paginationDelegate: GistListPaginationDelegate
+    ) {
         self.actions = actions
+        self.paginationDataSource = paginationDataSource
+        self.paginationDelegate = paginationDelegate
         super.init(frame: .zero)
         addSubviews()
         constrainSubviews()
@@ -88,13 +96,17 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
 extension GistListView: UITableViewDelegate, UITableViewDataSource {
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itens.count
+        return paginationDataSource.hasNextPage() ? itens.count + 1 : itens.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if paginationDataSource.canSetLoading(when: indexPath, reach: itens.count) {
+            return LoadingTableViewCell()
+        }
+        
         let cell = UITableViewCell()
-        cell.backgroundColor = .red
-        cell.textLabel?.text = itens[indexPath.row].owner.login
+        cell.backgroundColor = .white
+        cell.textLabel?.text = itens[indexPath.row].owner.login + " - " + String(itens[indexPath.row].files.count)
         return cell
     }
     
@@ -102,5 +114,10 @@ extension GistListView: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.cellForRow(at: indexPath)?.hero.id = "backgroundColorAnimated"
         actions?.didSelectGist(itens[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard paginationDataSource.isLoadingIndexPath(indexPath, reach: itens.count) else { return }
+        paginationDelegate.loadingNextPage()
     }
 }

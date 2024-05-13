@@ -29,6 +29,8 @@
 		51077D252BF24DF7002C7F0D /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D242BF24DF7002C7F0D /* CustomError.swift */; };
 		51077D282BF24E2C002C7F0D /* NetworkServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D272BF24E2C002C7F0D /* NetworkServiceProvider.swift */; };
 		51077D2B2BF25047002C7F0D /* NetworkServiceTargetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D2A2BF25047002C7F0D /* NetworkServiceTargetProtocol.swift */; };
+		51077D312BF277B3002C7F0D /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D302BF277B3002C7F0D /* LoadingTableViewCell.swift */; };
+		51077D332BF278B8002C7F0D /* TableViewPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D322BF278B8002C7F0D /* TableViewPagination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		51077D242BF24DF7002C7F0D /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		51077D272BF24E2C002C7F0D /* NetworkServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProvider.swift; sourceTree = "<group>"; };
 		51077D2A2BF25047002C7F0D /* NetworkServiceTargetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTargetProtocol.swift; sourceTree = "<group>"; };
+		51077D302BF277B3002C7F0D /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		51077D322BF278B8002C7F0D /* TableViewPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPagination.swift; sourceTree = "<group>"; };
+		511EBB302BF288FF009245CC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,7 @@
 		51077CC02BEE8977002C7F0D = {
 			isa = PBXGroup;
 			children = (
+				511EBB302BF288FF009245CC /* Config.xcconfig */,
 				51077CCB2BEE8977002C7F0D /* GistsTests */,
 				51077CE22BEE8978002C7F0D /* GistsTestsTests */,
 				51077CEC2BEE8978002C7F0D /* GistsTestsUITests */,
@@ -125,13 +131,14 @@
 		51077CCB2BEE8977002C7F0D /* GistsTests */ = {
 			isa = PBXGroup;
 			children = (
-				51077D032BEE917D002C7F0D /* Assets */,
 				51077CFD2BEE8BF3002C7F0D /* Application */,
 				51077CFE2BEE8C1A002C7F0D /* Coordinators */,
+				51077D2C2BF2773E002C7F0D /* Extensions */,
 				51077D012BEE9161002C7F0D /* Features */,
 				51077D262BF24E17002C7F0D /* Managers */,
 				51077D1E2BF234BE002C7F0D /* Models */,
 				51077D062BEECFF5002C7F0D /* Protocols */,
+				51077D032BEE917D002C7F0D /* Resources */,
 				51077CDA2BEE8978002C7F0D /* Info.plist */,
 			);
 			path = GistsTests;
@@ -190,13 +197,14 @@
 			path = GistsList;
 			sourceTree = "<group>";
 		};
-		51077D032BEE917D002C7F0D /* Assets */ = {
+		51077D032BEE917D002C7F0D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51077D2F2BF277A8002C7F0D /* SharedViews */,
 				51077CD52BEE8978002C7F0D /* Assets.xcassets */,
 				51077CD72BEE8978002C7F0D /* LaunchScreen.storyboard */,
 			);
-			path = Assets;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		51077D062BEECFF5002C7F0D /* Protocols */ = {
@@ -205,6 +213,7 @@
 				51077D192BEF8B53002C7F0D /* BaseView.swift */,
 				51077D092BEED015002C7F0D /* Coordinator.swift */,
 				51077D2A2BF25047002C7F0D /* NetworkServiceTargetProtocol.swift */,
+				51077D322BF278B8002C7F0D /* TableViewPagination.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -243,6 +252,21 @@
 				51077D272BF24E2C002C7F0D /* NetworkServiceProvider.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		51077D2C2BF2773E002C7F0D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51077D2F2BF277A8002C7F0D /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				51077D302BF277B3002C7F0D /* LoadingTableViewCell.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,12 +408,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				51077D2B2BF25047002C7F0D /* NetworkServiceTargetProtocol.swift in Sources */,
+				51077D312BF277B3002C7F0D /* LoadingTableViewCell.swift in Sources */,
 				51077D202BF234C8002C7F0D /* Gists.swift in Sources */,
 				51077D112BEED142002C7F0D /* GistDetailViewController.swift in Sources */,
 				51077D252BF24DF7002C7F0D /* CustomError.swift in Sources */,
 				51077D1A2BEF8B53002C7F0D /* BaseView.swift in Sources */,
 				51077CD12BEE8977002C7F0D /* GistListViewController.swift in Sources */,
 				51077D282BF24E2C002C7F0D /* NetworkServiceProvider.swift in Sources */,
+				51077D332BF278B8002C7F0D /* TableViewPagination.swift in Sources */,
 				51077CCD2BEE8977002C7F0D /* AppDelegate.swift in Sources */,
 				51077D132BEED15E002C7F0D /* GistDetailViewModel.swift in Sources */,
 				51077D0A2BEED015002C7F0D /* Coordinator.swift in Sources */,
@@ -566,9 +592,12 @@
 		};
 		51077CF42BEE8978002C7F0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 511EBB302BF288FF009245CC /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTH_TOKEN = "";
+				BASE_URL = "https://api.github.com";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -595,6 +624,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTH_TOKEN = "";
+				BASE_URL = "https://api.github.com";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

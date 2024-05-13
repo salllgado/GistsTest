@@ -19,13 +19,13 @@ protocol GistListViewModable: AnyObject {
 }
 
 enum GistsAPI: NetworkServiceTargetProtocol {
-    case getGistsFromRemote
+    case getGistsFromRemote(page: Int, limit: Int)
     case getGistsFromLocal
     
     var baseURL: URL? {
         switch self {
         case .getGistsFromRemote:
-            fatalError()
+            return .init(string: "https://api.github.com")
         case .getGistsFromLocal:
             return nil
         }
@@ -34,7 +34,7 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     var path: String {
         switch self {
         case .getGistsFromRemote:
-            fatalError()
+            return "/gists/public"
         case .getGistsFromLocal:
             return LocalyJsons.GistListFakeJson.rawValue
         }
@@ -46,8 +46,11 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     
     var parameters: [String : String] {
         switch self {
-        case .getGistsFromRemote:
-            fatalError()
+        case let .getGistsFromRemote(page, limit):
+            return [
+                "page": String(page),
+                "limit": String(limit)
+            ]
         case .getGistsFromLocal:
             return [:]
         }
@@ -55,6 +58,10 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     
     var body: [String : Any] {
         return [:]
+    }
+    
+    var shouldUseAccessToken: (Bool, String?) {
+        return (true, Bundle.main.object(forInfoDictionaryKey: "HUB_URL") as? String)
     }
     
     var source: Source {
@@ -67,7 +74,12 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     }
 }
 
-final class GistListViewModel: GistListViewModable {
+final class GistListViewModel: GistListViewModable, TableViewPagination {
+    
+    var currentPage: Int = 1
+    var numberOfPages: Int = 1
+    var hasNextPage: Bool = true
+    var shouldShowLoadingCell: Bool = true
     
     weak var delegate: GistListDelegate?
     private var gists: [Gist] = []
@@ -77,7 +89,7 @@ final class GistListViewModel: GistListViewModable {
             guard let self = self else { return }
             switch result {
             case let .success(success):
-                self.gists += success
+                self.gists = success
                 self.delegate?.displayData(gists: self.gists)
             case .failure:
                 self.delegate?.displayError(message: "Some error from api or parsing")
@@ -85,11 +97,26 @@ final class GistListViewModel: GistListViewModable {
         }
     }
     
-    func requestGists(completion: @escaping (Result<[Gist], NetworkError>) -> Void) {
-        NetworkServiceProvider.shared.request(target: GistsAPI.remote) { result in
+    func loadingNextPage() {
+        requestGists(page: currentPage + 1) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(success):
+                self.currentPage += 1
+                self.gists += success
+                self.delegate?.displayData(gists: self.gists)
+            case .failure:
+                break
+            }
+        }
+    }
+    
+    private func requestGists(page: Int = 1, limit: Int = 30, completion: @escaping (Result<[Gist], NetworkError>) -> Void) {
+        NetworkServiceProvider.shared.request(target: GistsAPI.getGistsFromRemote(page: page, limit: limit)) { result in
             completion(.success(result))
         } failure: { error in
             completion(.failure(error))
         }
     }
 }
+

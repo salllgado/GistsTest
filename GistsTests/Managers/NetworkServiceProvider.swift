@@ -27,7 +27,6 @@ enum NetworkError: Error {
 final class NetworkServiceProvider {
     
     private(set) var session: URLSession
-    var acessToken: String? = nil
     static var shared = NetworkServiceProvider()
     
     init(session: URLSession = URLSession.shared) {
@@ -95,8 +94,8 @@ final class NetworkServiceProvider {
             urlRequest.addValue(sessionid, forHTTPHeaderField: "Vidalink-Session-Id")
         }
         
-        if let acessToken = acessToken, target.shouldUseAccessToken {
-            urlRequest.addValue("Bearer \(acessToken)", forHTTPHeaderField: "Authorization")
+        if target.shouldUseAccessToken.0, let token = target.shouldUseAccessToken.1 {
+            urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         
         addAdditionalHeaders(target.additionalHeaders, request: &urlRequest)

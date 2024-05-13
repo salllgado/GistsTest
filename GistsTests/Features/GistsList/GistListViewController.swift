@@ -7,14 +7,26 @@
 
 import UIKit
 
+protocol GistListPaginationDataSource {
+    func canSetLoading(when indexPath: IndexPath, reach value: Int) -> Bool
+    func isLoadingIndexPath(_ indexPath: IndexPath, reach value: Int) -> Bool
+    func hasNextPage() -> Bool
+}
+
+protocol GistListPaginationDelegate {
+    func loadingNextPage()
+}
+
 final class GistListViewController: UIViewController {
+    
+    typealias GistListViewModelProtocol = (GistListViewModable & TableViewPagination)
 
     weak var customView: GistListViewProtocol?
 
-    private var viewModel: GistListViewModable
+    private var viewModel: GistListViewModelProtocol
     private var coordinator: GistListCoordinating
 
-    init(viewModel: GistListViewModable, coordinator: GistListCoordinating) {
+    init(viewModel: GistListViewModelProtocol, coordinator: GistListCoordinating) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -28,14 +40,20 @@ final class GistListViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = GistListView(actions: .init(didSelectGist: { [weak self] gist in
-            self?.coordinator.navigateToDetail(gist: gist)
-        }))
+        view = GistListView(
+            actions: .init(
+                didSelectGist: { [weak self] gist in
+                self?.coordinator.navigateToDetail(gist: gist)
+            }),
+            paginationDataSource: self,
+            paginationDelegate: self
+        )
         customView = view as? GistListViewProtocol
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Gists"
         loadData()
     }
     
@@ -53,5 +71,23 @@ extension GistListViewController: GistListDelegate {
     
     func displayError(message: String) {
         // display toast
+    }
+}
+
+extension GistListViewController: GistListPaginationDataSource, GistListPaginationDelegate {
+    func hasNextPage() -> Bool {
+        viewModel.hasNextPage
+    }
+    
+    func canSetLoading(when indexPath: IndexPath, reach value: Int) -> Bool {
+        viewModel.canSetLoading(when: indexPath, reach: value)
+    }
+    
+    func isLoadingIndexPath(_ indexPath: IndexPath, reach value: Int) -> Bool {
+        viewModel.isLoadingIndexPath(indexPath, reach: value)
+    }
+    
+    func loadingNextPage() {
+        viewModel.loadingNextPage()
     }
 }

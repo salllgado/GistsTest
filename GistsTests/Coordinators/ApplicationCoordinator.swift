@@ -20,6 +20,7 @@ final class ApplicationCoordinator: Coordinator {
     init(window: UIWindow?, context: UINavigationController = .init()) {
         self.window = window
         self.context = context
+        self.context.navigationBar.prefersLargeTitles = true
         self.context.isHeroEnabled = true
         self.context.hero.navigationAnimationType = .none
     }
@@ -37,10 +38,10 @@ final class ApplicationCoordinator: Coordinator {
 extension ApplicationCoordinator: GistListCoordinating {
     
     func navigateToDetail(gist: Gist) {
-//        let viewModel = GistDetailViewModel(gist: gist)
-//        context.pushViewController(
-//            GistDetailViewController(viewModel, self),
-//            animated: true
-//        )
+        let viewModel = GistDetailViewModel(gist: gist)
+        context.pushViewController(
+            GistDetailViewController(viewModel: viewModel),
+            animated: true
+        )
     }
 }

@@ -66,7 +66,7 @@ struct FileDetail: Decodable {
 }
 
 struct User: Decodable {
-    // Define user properties if needed
+    let login: String
 }
 
 struct Owner: Decodable {

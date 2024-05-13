@@ -23,17 +23,13 @@ protocol NetworkServiceTargetProtocol {
     var parameters: [String: String] { get }
     var body: [String: Any] { get }
     var timeout: TimeInterval { get }
-    var shouldUseAccessToken: Bool { get }
+    var shouldUseAccessToken: (Bool, String?) { get }
     var sessionId: String? { get }
 }
 
 extension NetworkServiceTargetProtocol {
     var additionalHeaders: [String: String]? {
         return nil
-    }
-    
-    var shouldUseAccessToken: Bool {
-        return true
     }
     
     var sessionId: String? {
