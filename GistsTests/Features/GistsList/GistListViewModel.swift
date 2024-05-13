@@ -25,7 +25,10 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     var baseURL: URL? {
         switch self {
         case .getGistsFromRemote:
-            return .init(string: "https://api.github.com")
+            guard let baseURLString = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
+                return nil
+            }
+            return .init(string: "https://" + baseURLString)
         case .getGistsFromLocal:
             return nil
         }
@@ -61,7 +64,7 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     }
     
     var shouldUseAccessToken: (Bool, String?) {
-        return (true, Bundle.main.object(forInfoDictionaryKey: "HUB_URL") as? String)
+        return (true, Bundle.main.object(forInfoDictionaryKey: "AUTH_TOKEN") as? String)
     }
     
     var source: Source {
