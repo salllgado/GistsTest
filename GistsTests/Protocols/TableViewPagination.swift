@@ -8,7 +8,6 @@
 import UIKit
 
 protocol TableViewPagination {
-    
     var currentPage: Int { get set }
     var numberOfPages: Int { get set }
     var shouldShowLoadingCell: Bool { get set }

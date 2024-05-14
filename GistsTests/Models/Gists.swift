@@ -47,6 +47,10 @@ struct Gist: Decodable {
         case owner
         case truncated
     }
+    
+    func toGistSimplified() -> GistSimplified{
+        return .init(id: id, userImageURL: owner.avatarUrl, userName: owner.login, files: files)
+    }
 }
 
 struct FileDetail: Decodable {
@@ -73,7 +77,7 @@ struct Owner: Decodable {
     let login: String
     let id: Int
     let nodeId: String
-    let avatarUrl: String
+    let avatarUrl: URL
     let gravatarId: String
     let url: String
     let htmlUrl: String
@@ -111,3 +115,13 @@ struct Owner: Decodable {
     }
 }
 
+struct GistSimplified {
+    let id: String
+    let userImageURL: URL
+    let userName: String
+    let files: [String: FileDetail]
+    
+    func getFileCountText() -> String {
+        files.count > 1 ? "Arquivo \(files.count)" : "Arquivos \(files.count)"
+    }
+}

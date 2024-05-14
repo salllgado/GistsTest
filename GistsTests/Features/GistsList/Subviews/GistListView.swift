@@ -30,6 +30,7 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
         tableView.allowsMultipleSelection = false
         tableView.backgroundColor = .systemBackground
         tableView.separatorStyle = .singleLine
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -81,7 +82,6 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
         
         isHeroEnabled = true
         isHeroEnabledForSubviews = true
-        hero.modifiers = [.fade]
     }
     
     // MARK: - GistListViewProtocol
@@ -94,7 +94,7 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
 
 // MARK: - UITableViewDelegate and UITableViewDataSource
 extension GistListView: UITableViewDelegate, UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return paginationDataSource.hasNextPage() ? itens.count + 1 : itens.count
     }
@@ -104,20 +104,24 @@ extension GistListView: UITableViewDelegate, UITableViewDataSource {
             return LoadingTableViewCell()
         }
         
-        let cell = UITableViewCell()
-        cell.backgroundColor = .white
-        cell.textLabel?.text = itens[indexPath.row].owner.login + " - " + String(itens[indexPath.row].files.count)
+        let gist = itens[indexPath.row].toGistSimplified()
+        let cell = GistListTableViewCell(gist: gist)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.cellForRow(at: indexPath)?.hero.id = "backgroundColorAnimated"
         actions?.didSelectGist(itens[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layoutIfNeeded()
         guard paginationDataSource.isLoadingIndexPath(indexPath, reach: itens.count) else { return }
         paginationDelegate.loadingNextPage()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66.0 // I set the value here because it seems that there is a bug in the listing that shows a constraint break by 0.3333333
+    }
+    
 }

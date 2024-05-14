@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GistDetailViewModable {
-    
+    var gist: Gist { get }
 }
 
 final class GistDetailViewModel: GistDetailViewModable {
