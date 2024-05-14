@@ -33,6 +33,7 @@
 		51077D332BF278B8002C7F0D /* TableViewPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51077D322BF278B8002C7F0D /* TableViewPagination.swift */; };
 		51E331B22BF2E8C90014717D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */; };
 		51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */; };
+		51E331B92BF389530014717D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 51E331B82BF389530014717D /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E331B92BF389530014717D /* Toast in Frameworks */,
 				51077D1D2BEF8C93002C7F0D /* Hero in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,7 +239,6 @@
 			children = (
 				51077D142BEED1DE002C7F0D /* GistListView.swift */,
 				51077D172BEEDB2F002C7F0D /* GistTableViewCell.swift */,
-				51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -270,6 +271,7 @@
 		51077D2F2BF277A8002C7F0D /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
+				51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */,
 				51077D302BF277B3002C7F0D /* LoadingTableViewCell.swift */,
 			);
 			path = SharedViews;
@@ -293,6 +295,7 @@
 			name = GistsTests;
 			packageProductDependencies = (
 				51077D1C2BEF8C93002C7F0D /* Hero */,
+				51E331B82BF389530014717D /* Toast */,
 			);
 			productName = GistsTests;
 			productReference = 51077CC92BEE8977002C7F0D /* GistsTests.app */;
@@ -368,8 +371,8 @@
 			);
 			mainGroup = 51077CC02BEE8977002C7F0D;
 			packageReferences = (
-				51077CFC2BEE8BC6002C7F0D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */,
+				51E331B72BF389530014717D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 51077CCA2BEE8977002C7F0D /* Products */;
 			projectDirPath = "";
@@ -766,20 +769,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		51077CFC2BEE8BC6002C7F0D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
 		51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.6.3;
+			};
+		};
+		51E331B72BF389530014717D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -789,6 +792,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 51077D1B2BEF8C93002C7F0D /* XCRemoteSwiftPackageReference "Hero" */;
 			productName = Hero;
+		};
+		51E331B82BF389530014717D /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51E331B72BF389530014717D /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

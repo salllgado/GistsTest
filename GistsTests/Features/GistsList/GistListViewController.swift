@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 protocol GistListPaginationDataSource {
     func canSetLoading(when indexPath: IndexPath, reach value: Int) -> Bool
@@ -25,6 +26,8 @@ final class GistListViewController: UIViewController {
 
     private var viewModel: GistListViewModelProtocol
     private var coordinator: GistListCoordinating
+    
+    private var style = ToastStyle()
 
     init(viewModel: GistListViewModelProtocol, coordinator: GistListCoordinating) {
         self.viewModel = viewModel
@@ -55,9 +58,13 @@ final class GistListViewController: UIViewController {
         super.viewDidLoad()
         title = "Gists"
         loadData()
+        setupElements()
     }
     
     // MARK: - private methods
+    private func setupElements() {
+        style.messageColor = .white
+    }
 
     private func loadData() {
         viewModel.fetchData()
@@ -70,7 +77,7 @@ extension GistListViewController: GistListDelegate {
     }
     
     func displayError(message: String) {
-        // display toast
+        view.makeToast(message, duration: 1.5, position: .bottom, style: style)
     }
 }
 
