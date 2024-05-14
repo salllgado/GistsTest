@@ -122,6 +122,6 @@ struct GistSimplified {
     let files: [String: FileDetail]
     
     func getFileCountText() -> String {
-        files.count > 1 ? "Arquivo \(files.count)" : "Arquivos \(files.count)"
+        files.count > 1 ? "Files \(files.count)" : "File \(files.count)"
     }
 }
