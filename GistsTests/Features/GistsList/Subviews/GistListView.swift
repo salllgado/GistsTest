@@ -29,8 +29,7 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.allowsMultipleSelection = false
         tableView.backgroundColor = .systemBackground
-        tableView.separatorStyle = .singleLine
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -115,7 +114,6 @@ extension GistListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.layoutIfNeeded()
         guard paginationDataSource.isLoadingIndexPath(indexPath, reach: itens.count) else { return }
         paginationDelegate.loadingNextPage()
     }

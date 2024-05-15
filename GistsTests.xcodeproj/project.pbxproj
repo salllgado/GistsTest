@@ -34,6 +34,7 @@
 		51E331B22BF2E8C90014717D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */; };
 		51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */; };
 		51E331B92BF389530014717D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 51E331B82BF389530014717D /* Toast */; };
+		51E331BC2BF390930014717D /* GistsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331BB2BF390930014717D /* GistsAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		511EBB302BF288FF009245CC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIndicatorView.swift; sourceTree = "<group>"; };
+		51E331BB2BF390930014717D /* GistsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		51077CCB2BEE8977002C7F0D /* GistsTests */ = {
 			isa = PBXGroup;
 			children = (
+				51E331BA2BF390840014717D /* Apis */,
 				51077CFD2BEE8BF3002C7F0D /* Application */,
 				51077CFE2BEE8C1A002C7F0D /* Coordinators */,
 				51077D2C2BF2773E002C7F0D /* Extensions */,
@@ -275,6 +278,14 @@
 				51077D302BF277B3002C7F0D /* LoadingTableViewCell.swift */,
 			);
 			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		51E331BA2BF390840014717D /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				51E331BB2BF390930014717D /* GistsAPI.swift */,
+			);
+			path = Apis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +437,7 @@
 				51077D1A2BEF8B53002C7F0D /* BaseView.swift in Sources */,
 				51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */,
 				51077CD12BEE8977002C7F0D /* GistListViewController.swift in Sources */,
+				51E331BC2BF390930014717D /* GistsAPI.swift in Sources */,
 				51077D282BF24E2C002C7F0D /* NetworkServiceProvider.swift in Sources */,
 				51077D332BF278B8002C7F0D /* TableViewPagination.swift in Sources */,
 				51077CCD2BEE8977002C7F0D /* AppDelegate.swift in Sources */,

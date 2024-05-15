@@ -34,6 +34,13 @@ final class GistListTableViewCell: UITableViewCell {
         return view
     }()
     
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .separator
+        return view
+    }()
+    
     init(gist: GistSimplified) {
         self.gist = gist
         super.init(style: .default, reuseIdentifier: nil)
@@ -56,10 +63,14 @@ final class GistListTableViewCell: UITableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(userNameLabel)
         contentView.addSubview(fileIndicatorView)
+        contentView.addSubview(separatorView)
     }
     
     private func constrainSubviews() {
-        constrainContentView()
+        constrainAvatarImageView()
+        constrainUserNameLabel()
+        constrainFileIndicatorView()
+        constrainSeparatorView()
     }
     
     private func configureAdditionalSettings() {
@@ -78,7 +89,7 @@ final class GistListTableViewCell: UITableViewCell {
     }
     
     // MARK: - Constrains
-    private func constrainContentView() {
+    private func constrainAvatarImageView() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
@@ -94,9 +105,11 @@ final class GistListTableViewCell: UITableViewCell {
             ),
             avatarImageView.widthAnchor.constraint(
                 equalToConstant: GistListTableViewCell.avatarViewHeight
-            )]
-        )
-        
+            )
+        ])
+    }
+    
+    private func constrainUserNameLabel() {
         NSLayoutConstraint.activate([
             userNameLabel.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
@@ -112,6 +125,9 @@ final class GistListTableViewCell: UITableViewCell {
             )
         ])
         
+    }
+    
+    private func constrainFileIndicatorView() {
         NSLayoutConstraint.activate([
             fileIndicatorView.topAnchor.constraint(
                 equalTo: userNameLabel.bottomAnchor,
@@ -121,6 +137,15 @@ final class GistListTableViewCell: UITableViewCell {
                 equalTo: avatarImageView.trailingAnchor,
                 constant: 16
             )
+        ])
+    }
+    
+    private func constrainSeparatorView() {
+        NSLayoutConstraint.activate([
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
         ])
     }
 }
