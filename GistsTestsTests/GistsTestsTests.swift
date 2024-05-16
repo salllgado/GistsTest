@@ -41,7 +41,7 @@ final class ApplicationCoordinatorTests: XCTestCase {
         let sut = ApplicationCoordinator(window: nil, context: spy)
         
         // When
-        sut.navigateToDetail()
+        sut.navigateToDetail(gist: .fixture())
         
         // Than
         XCTAssertEqual(spy.pushViewControllerCalledCount, 1)

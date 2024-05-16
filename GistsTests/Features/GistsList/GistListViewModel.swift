@@ -18,18 +18,62 @@ protocol GistListViewModable: AnyObject {
     func fetchData()
 }
 
+protocol GistListRequestManagerProtocol {
+    func requestGists(
+            page: Int,
+            limit: Int,
+            completion: @escaping (Result<[Gist], NetworkError>
+        ) -> Void
+    )
+}
+
+final class GistListRequestManager: GistListRequestManagerProtocol {
+    func requestGists(page: Int, limit: Int, completion: @escaping (Result<[Gist], NetworkError>) -> Void) {
+        NetworkServiceProvider.shared.request(
+            target: GistsAPI.getGistsFromRemote(
+                page: page,
+                limit: limit
+            )
+        ) { result in
+            completion(.success(result))
+        } failure: { error in
+            completion(.failure(error))
+        }
+    }
+}
+
 final class GistListViewModel: GistListViewModable, TableViewPagination {
     
-    var currentPage: Int = 1
-    var numberOfPages: Int = 1
-    var hasNextPage: Bool = true
-    var shouldShowLoadingCell: Bool = true
+    var currentPage: Int
+    var numberOfPages: Int
+    var hasNextPage: Bool
+    var shouldShowLoadingCell: Bool
+    
+    let limit: Int
     
     weak var delegate: GistListDelegate?
     private var gists: [Gist] = []
     
+    private var requestManager: GistListRequestManagerProtocol
+    
+    init(
+        requestManager: GistListRequestManagerProtocol,
+        currentPage: Int = 1,
+        numberOfPages: Int = 1,
+        hasNextPage: Bool = true,
+        shouldShowLoadingCell: Bool = true,
+        limit: Int = 30
+    ) {
+        self.requestManager = requestManager
+        self.currentPage = currentPage
+        self.numberOfPages = numberOfPages
+        self.hasNextPage = hasNextPage
+        self.shouldShowLoadingCell = shouldShowLoadingCell
+        self.limit = limit
+    }
+    
     func fetchData() {
-        requestGists { [weak self] result in
+        requestManager.requestGists(page: 1, limit: limit) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(success):
@@ -42,7 +86,7 @@ final class GistListViewModel: GistListViewModable, TableViewPagination {
     }
     
     func loadingNextPage() {
-        requestGists(page: currentPage + 1) { [weak self] result in
+        requestManager.requestGists(page: currentPage + 1, limit: limit) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(success):
@@ -52,19 +96,6 @@ final class GistListViewModel: GistListViewModable, TableViewPagination {
             case let .failure(error):
                 self.delegate?.displayError(message: error.localizedDescription)
             }
-        }
-    }
-    
-    private func requestGists(page: Int = 1, limit: Int = 30, completion: @escaping (Result<[Gist], NetworkError>) -> Void) {
-        NetworkServiceProvider.shared.request(
-            target: GistsAPI.getGistsFromRemote(
-                page: page,
-                limit: limit
-            )
-        ) { result in
-            completion(.success(result))
-        } failure: { error in
-            completion(.failure(error))
         }
     }
 }

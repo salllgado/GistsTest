@@ -26,7 +26,7 @@ final class ApplicationCoordinator: Coordinator {
     }
     
     func start() {
-        let vm = GistListViewModel()
+        let vm = GistListViewModel(requestManager: GistListRequestManager())
         let vc = GistListViewController(viewModel: vm, coordinator: self)
         context.pushViewController(vc, animated: false)
         window?.rootViewController = context
