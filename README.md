@@ -7,7 +7,7 @@ GistsTest é um projeto Swift que explora a funcionalidade da API do GitHub para
 Para rodar o projeto, clone o repositório e abra `GistsTest.xcodeproj` no Xcode 15.3 ou superior.
 Para consumir os gists da api do Github deve ser setado um valor para `AUTH_TOKEN` e para `BASE_URL` dentro do arquivo `Config.xcconfig`
 
-** BASE_URL**: utilize o valor `api.github.com`
+Para `BASE_URL` utilize o valor `api.github.com`
 
 ## Funcionalidades
 - **Busca Remota**: O projeto está configurado para buscar gists diretamente da API do GitHub.

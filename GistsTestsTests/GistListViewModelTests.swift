@@ -107,7 +107,6 @@ final class GistListViewModelTests: XCTestCase {
     
     func test_onRequestGistsWithFailure_shouldDisplayError() {
         // Given
-        let gists = [Gist.fixture()]
         let mock = GistListRequestManagerMock(result: .failure(.badURL))
         let spy = GistListControllerSpy()
         
