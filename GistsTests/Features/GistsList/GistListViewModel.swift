@@ -18,30 +18,6 @@ protocol GistListViewModable: AnyObject {
     func fetchData()
 }
 
-protocol GistListRequestManagerProtocol {
-    func requestGists(
-            page: Int,
-            limit: Int,
-            completion: @escaping (Result<[Gist], NetworkError>
-        ) -> Void
-    )
-}
-
-final class GistListRequestManager: GistListRequestManagerProtocol {
-    func requestGists(page: Int, limit: Int, completion: @escaping (Result<[Gist], NetworkError>) -> Void) {
-        NetworkServiceProvider.shared.request(
-            target: GistsAPI.getGistsFromRemote(
-                page: page,
-                limit: limit
-            )
-        ) { result in
-            completion(.success(result))
-        } failure: { error in
-            completion(.failure(error))
-        }
-    }
-}
-
 final class GistListViewModel: GistListViewModable, TableViewPagination {
     
     var currentPage: Int

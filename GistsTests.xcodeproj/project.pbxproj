@@ -37,6 +37,7 @@
 		51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */; };
 		51E331B92BF389530014717D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 51E331B82BF389530014717D /* Toast */; };
 		51E331BC2BF390930014717D /* GistsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331BB2BF390930014717D /* GistsAPI.swift */; };
+		51EE7E022BF58C6D00202387 /* GistListRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EE7E012BF58C6D00202387 /* GistListRequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIndicatorView.swift; sourceTree = "<group>"; };
 		51E331BB2BF390930014717D /* GistsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsAPI.swift; sourceTree = "<group>"; };
+		51EE7E012BF58C6D00202387 /* GistListRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListRequestManager.swift; sourceTree = "<group>"; };
+		51EE7E032BF58C8D00202387 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		51077CC02BEE8977002C7F0D = {
 			isa = PBXGroup;
 			children = (
+				51EE7E032BF58C8D00202387 /* README.md */,
 				511EBB302BF288FF009245CC /* Config.xcconfig */,
 				51077CCB2BEE8977002C7F0D /* GistsTests */,
 				51077CE22BEE8978002C7F0D /* GistsTestsTests */,
@@ -208,6 +212,7 @@
 				51077D162BEEDB15002C7F0D /* Subviews */,
 				51077CD02BEE8977002C7F0D /* GistListViewController.swift */,
 				51077D0D2BEED050002C7F0D /* GistListViewModel.swift */,
+				51EE7E012BF58C6D00202387 /* GistListRequestManager.swift */,
 			);
 			path = GistsList;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				51077D0A2BEED015002C7F0D /* Coordinator.swift in Sources */,
 				51077D152BEED1DE002C7F0D /* GistListView.swift in Sources */,
 				51077D182BEEDB2F002C7F0D /* GistTableViewCell.swift in Sources */,
+				51EE7E022BF58C6D00202387 /* GistListRequestManager.swift in Sources */,
 				51077CCF2BEE8977002C7F0D /* SceneDelegate.swift in Sources */,
 				51077D002BEE8C31002C7F0D /* ApplicationCoordinator.swift in Sources */,
 				51077D0E2BEED050002C7F0D /* GistListViewModel.swift in Sources */,
@@ -643,6 +649,9 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = salgadosproductions.test.GistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -669,6 +678,9 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = salgadosproductions.test.GistsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
