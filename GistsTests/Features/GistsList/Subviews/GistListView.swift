@@ -8,19 +8,24 @@
 import UIKit
 import Hero
 
+struct GistListViewActions {
+    let didSelectGist: (_ gist: Gist) -> Void
+}
+
 protocol GistListViewProtocol: UIView {
+    var actions: GistListViewActions? { get }
+    var paginationDataSource: GistListPaginationDataSource? { get }
+    var paginationDelegate: GistListPaginationDelegate? { get }
+    
+    func setBindings(actions: GistListViewActions, paginationDataSource: GistListPaginationDataSource, paginationDelegate: GistListPaginationDelegate)
     func displayData(_ itens: [Gist])
 }
 
 final class GistListView: UIView, BaseView, GistListViewProtocol {
     
-    struct Actions {
-        let didSelectGist: (_ gist: Gist) -> Void
-    }
-    
-    private var actions: Actions?
-    var paginationDataSource: GistListPaginationDataSource
-    var paginationDelegate: GistListPaginationDelegate
+    private(set) var actions: GistListViewActions?
+    private(set) var paginationDataSource: GistListPaginationDataSource?
+    private(set) var paginationDelegate: GistListPaginationDelegate?
     
     // MARK: - Properties
     
@@ -42,15 +47,21 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
     }
     
     // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubviews()
+        constrainSubviews()
+        additionalConfigurationSettings()
+    }
     
     init(
-        actions: Actions,
-        paginationDataSource: GistListPaginationDataSource,
-        paginationDelegate: GistListPaginationDelegate
+//        actions: GistListViewActions,
+//        paginationDataSource: GistListPaginationDataSource,
+//        paginationDelegate: GistListPaginationDelegate
     ) {
-        self.actions = actions
-        self.paginationDataSource = paginationDataSource
-        self.paginationDelegate = paginationDelegate
+//        self.actions = actions
+//        self.paginationDataSource = paginationDataSource
+//        self.paginationDelegate = paginationDelegate
         super.init(frame: .zero)
         addSubviews()
         constrainSubviews()
@@ -84,6 +95,11 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
     }
     
     // MARK: - GistListViewProtocol
+    func setBindings(actions: GistListViewActions, paginationDataSource: GistListPaginationDataSource, paginationDelegate: GistListPaginationDelegate) {
+        self.actions = actions
+        self.paginationDataSource = paginationDataSource
+        self.paginationDelegate = paginationDelegate
+    }
     
     func displayData(_ itens: [Gist]) {
         self.itens = itens
@@ -95,11 +111,11 @@ final class GistListView: UIView, BaseView, GistListViewProtocol {
 extension GistListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paginationDataSource.hasNextPage() ? itens.count + 1 : itens.count
+        return paginationDataSource?.hasNextPage() ?? false ? itens.count + 1 : itens.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if paginationDataSource.canSetLoading(when: indexPath, reach: itens.count) {
+        if paginationDataSource?.canSetLoading(when: indexPath, reach: itens.count) ?? false {
             return LoadingTableViewCell()
         }
         
@@ -114,8 +130,8 @@ extension GistListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard paginationDataSource.isLoadingIndexPath(indexPath, reach: itens.count) else { return }
-        paginationDelegate.loadingNextPage()
+        guard paginationDataSource?.isLoadingIndexPath(indexPath, reach: itens.count) ?? false else { return }
+        paginationDelegate?.loadingNextPage()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

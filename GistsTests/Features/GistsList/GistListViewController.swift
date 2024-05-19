@@ -18,42 +18,43 @@ protocol GistListPaginationDelegate {
     func loadingNextPage()
 }
 
+typealias GistListViewModelProtocol = (GistListViewModable & TableViewPagination)
+
 final class GistListViewController: UIViewController {
     
-    typealias GistListViewModelProtocol = (GistListViewModable & TableViewPagination)
-
-    weak var customView: GistListViewProtocol?
-
+    private var customView: GistListViewProtocol?
     private var viewModel: GistListViewModelProtocol
     private var coordinator: GistListCoordinating
     
     private var style = ToastStyle()
-
-    init(viewModel: GistListViewModelProtocol, coordinator: GistListCoordinating) {
+    
+    init(view: GistListViewProtocol, viewModel: GistListViewModelProtocol, coordinator: GistListCoordinating) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.customView = view
         super.init(nibName: nil, bundle: nil)
         
         self.viewModel.delegate = self
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         super.loadView()
-        view = GistListView(
+        view = customView
+        customView?.setBindings(
             actions: .init(
                 didSelectGist: { [weak self] gist in
-                self?.coordinator.navigateToDetail(gist: gist)
-            }),
+                    self?.coordinator.navigateToDetail(gist: gist)
+                }
+            ),
             paginationDataSource: self,
             paginationDelegate: self
         )
-        customView = view as? GistListViewProtocol
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Gists"
@@ -65,7 +66,7 @@ final class GistListViewController: UIViewController {
     private func setupElements() {
         style.messageColor = .white
     }
-
+    
     private func loadData() {
         viewModel.fetchData()
     }
