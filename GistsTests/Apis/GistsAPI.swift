@@ -64,4 +64,8 @@ enum GistsAPI: NetworkServiceTargetProtocol {
             return .localy
         }
     }
+    
+    var strategy: JSONDecoder.KeyDecodingStrategy {
+        return .convertFromSnakeCase
+    }
 }

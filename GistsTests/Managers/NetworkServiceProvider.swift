@@ -42,12 +42,18 @@ final class NetworkServiceProvider {
         case .remote:
             self.requestDataFromRemote(target: target, success: success, failure: failure)
         case .localy:
-            self.requestDataLocaly(jsonName: target.path, success: success, failure: failure)
+            self.requestDataLocaly(
+                jsonName: target.path,
+                strategy: target.strategy,
+                success: success,
+                failure: failure
+            )
         }
     }
     
     private func requestDataLocaly<T: Decodable>(
         jsonName: String,
+        strategy: JSONDecoder.KeyDecodingStrategy,
         success: @escaping ((_ result: T) -> Void),
         failure: @escaping (_ error: NetworkError) -> Void
     ) {
@@ -56,7 +62,12 @@ final class NetworkServiceProvider {
                 let url = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: url)
                 
-                self.parseData(data: data, success: success, failure: failure)
+                self.parseData(
+                    data: data,
+                    strategy: strategy,
+                    success: success,
+                    failure: failure
+                )
             } catch {
                 failure(.parseError(error))
             }
@@ -118,7 +129,12 @@ final class NetworkServiceProvider {
                 if let error = error {
                     failure(.connectionFailure(error))
                 } else {
-                    self?.parseData(data: data, success: success, failure: failure)
+                    self?.parseData(
+                        data: data,
+                        strategy: target.strategy,
+                        success: success,
+                        failure: failure
+                    )
                 }
             }
         }
@@ -128,6 +144,7 @@ final class NetworkServiceProvider {
     
     private func parseData<T: Decodable>(
         data: Data?,
+        strategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
         success: @escaping ((_ result: T) -> Void),
         failure: @escaping (_ error: NetworkError) -> Void
     ) {
@@ -137,7 +154,10 @@ final class NetworkServiceProvider {
         }
         
         do {
-            let decoded = try JSONDecoder().decode(T.self, from: data)
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.keyDecodingStrategy = strategy
+            
+            let decoded = try jsonDecoder.decode(T.self, from: data)
             success(decoded)
         } catch(let error) {
 #if DEBUG

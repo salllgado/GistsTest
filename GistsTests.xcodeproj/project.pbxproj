@@ -34,6 +34,7 @@
 		517CE6752BF4E59C00372BE4 /* GistListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517CE6742BF4E59C00372BE4 /* GistListViewModelTests.swift */; };
 		51A2DD692BF562FE0012ABF1 /* GistExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A2DD682BF562FE0012ABF1 /* GistExtensions.swift */; };
 		51B73B6B2BFA50AB00AB0B86 /* GistListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B73B6A2BFA50AB00AB0B86 /* GistListViewControllerTests.swift */; };
+		51E2CD3E2BFB8C7B001BA059 /* GistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2CD3D2BFB8C7B001BA059 /* GistDetailView.swift */; };
 		51E331B22BF2E8C90014717D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */; };
 		51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */; };
 		51E331B92BF389530014717D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 51E331B82BF389530014717D /* Toast */; };
@@ -90,6 +91,7 @@
 		517CE6742BF4E59C00372BE4 /* GistListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListViewModelTests.swift; sourceTree = "<group>"; };
 		51A2DD682BF562FE0012ABF1 /* GistExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistExtensions.swift; sourceTree = "<group>"; };
 		51B73B6A2BFA50AB00AB0B86 /* GistListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistListViewControllerTests.swift; sourceTree = "<group>"; };
+		51E2CD3D2BFB8C7B001BA059 /* GistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDetailView.swift; sourceTree = "<group>"; };
 		51E331B12BF2E8C90014717D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		51E331B32BF2EBDD0014717D /* FileIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIndicatorView.swift; sourceTree = "<group>"; };
 		51E331BB2BF390930014717D /* GistsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistsAPI.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				51077D102BEED142002C7F0D /* GistDetailViewController.swift */,
 				51077D122BEED15E002C7F0D /* GistDetailViewModel.swift */,
+				51E2CD3D2BFB8C7B001BA059 /* GistDetailView.swift */,
 			);
 			path = GistDetail;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				51077D252BF24DF7002C7F0D /* CustomError.swift in Sources */,
 				51077D1A2BEF8B53002C7F0D /* BaseView.swift in Sources */,
 				51E331B42BF2EBDD0014717D /* FileIndicatorView.swift in Sources */,
+				51E2CD3E2BFB8C7B001BA059 /* GistDetailView.swift in Sources */,
 				51077CD12BEE8977002C7F0D /* GistListViewController.swift in Sources */,
 				51E331BC2BF390930014717D /* GistsAPI.swift in Sources */,
 				51077D282BF24E2C002C7F0D /* NetworkServiceProvider.swift in Sources */,

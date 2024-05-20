@@ -25,6 +25,7 @@ protocol NetworkServiceTargetProtocol {
     var timeout: TimeInterval { get }
     var shouldUseAccessToken: (Bool, String?) { get }
     var sessionId: String? { get }
+    var strategy: JSONDecoder.KeyDecodingStrategy { get }
 }
 
 extension NetworkServiceTargetProtocol {
@@ -38,6 +39,10 @@ extension NetworkServiceTargetProtocol {
     
     var timeout: TimeInterval {
         return 60
+    }
+    
+    var strategy: JSONDecoder.KeyDecodingStrategy {
+        return .useDefaultKeys
     }
 }
 

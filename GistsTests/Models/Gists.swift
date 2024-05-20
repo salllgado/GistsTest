@@ -34,13 +34,13 @@ struct FileDetail: Decodable {
     let rawUrl: String
     let size: Int
     
-    enum CodingKeys: String, CodingKey {
-        case filename
-        case type
-        case language
-        case rawUrl = "raw_url"
-        case size
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case filename
+//        case type
+//        case language
+//        case rawUrl = "raw_url"
+//        case size
+//    }
 }
 
 struct User: Decodable {
@@ -53,12 +53,12 @@ struct Owner: Decodable {
     let avatarUrl: URL
     let url: String
     
-    enum CodingKeys: String, CodingKey {
-        case login
-        case id
-        case avatarUrl = "avatar_url"
-        case url
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case login
+//        case id
+//        case avatarUrl = "avatar_url"
+//        case url
+//    }
 }
 
 struct GistSimplified {
