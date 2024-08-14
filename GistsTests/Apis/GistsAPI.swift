@@ -53,7 +53,7 @@ enum GistsAPI: NetworkServiceTargetProtocol {
     }
     
     var shouldUseAccessToken: (Bool, String?) {
-        return (true, Bundle.main.object(forInfoDictionaryKey: "AUTH_TOKEN") as? String)
+        return (false, nil)
     }
     
     var source: Source {

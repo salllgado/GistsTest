@@ -101,10 +101,6 @@ final class NetworkServiceProvider {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        if let sessionid = target.sessionId {
-            urlRequest.addValue(sessionid, forHTTPHeaderField: "Vidalink-Session-Id")
-        }
-        
         if target.shouldUseAccessToken.0, let token = target.shouldUseAccessToken.1 {
             urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
